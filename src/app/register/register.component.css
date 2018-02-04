@@ -1,0 +1,25 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2%;
+    max-width: 40%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .register-container > * {
+    width: 100%;
+  }
+
+  .register-container .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+  .register-container .message a {
+    color: #339dcf;
+    text-decoration: none;
+  }

@@ -1,20 +1,26 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div id="menuBar" style="background-color: black; min-width: 100vw;"  *ngIf="menuHidden">
 
+  <button mat-button [matMenuTriggerFor]="table" style="color: white;">Table</button>
+  <mat-menu #table="matMenu">
+    <button mat-menu-item (click)="this.router.navigate(['/table']);">Table</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="matches" style="color: white;">Matches</button>
+  <mat-menu #matches="matMenu">
+    <button mat-menu-item (click)="this.router.navigate(['/matches']);">Matches</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="history" style="color: white;">History</button>
+  <mat-menu #history="matMenu">
+    <button mat-menu-item>History</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="user" style="float: right; color: white;">User</button>
+  <mat-menu #user="matMenu">
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Select Team</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+    <button mat-menu-item (click)="delete()">Delete Account</button>
+  </mat-menu>
+</div>
+<router-outlet></router-outlet>

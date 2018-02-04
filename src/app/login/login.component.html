@@ -1,0 +1,16 @@
+<div class="login-container">
+  <mat-form-field>
+    <input matInput placeholder="Username" [(ngModel)]="user.username" [formControl]="username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password" [formControl]="password"> 
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="login();">Login</button>
+    <button mat-raised-button color="primary" (click)="this.router.navigate(['/register']);">Register</button>
+  </div>
+  <p class="message">Forgot your password? <a routerLink="/reset">Reset password</a></p>
+</div>
