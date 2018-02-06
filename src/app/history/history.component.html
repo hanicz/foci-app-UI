@@ -1,4 +1,4 @@
-<div class="table-container mat-elevation-z8">
+<div class="history-container mat-elevation-z8">
 
   <mat-form-field>
     <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="load_table();">
@@ -7,18 +7,13 @@
   </mat-form-field>
 
   <mat-table #table [dataSource]="dataSource">
-
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef style="text-align: center;"> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="point">
-      <mat-header-cell *matHeaderCellDef style="text-align: center;"> Point </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.point}} </mat-cell>
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+      <mat-header-cell *matHeaderCellDef style="text-align: center;"> {{ column.header }} </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{column.cell(element)}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+
 </div>

@@ -1,26 +1,20 @@
-<div id="menuBar" style="background-color: black; min-width: 100vw;"  *ngIf="menuHidden">
-
-  <button mat-button [matMenuTriggerFor]="table" style="color: white;">Table</button>
-  <mat-menu #table="matMenu">
-    <button mat-menu-item (click)="this.router.navigate(['/table']);">Table</button>
-  </mat-menu>
-
-  <button mat-button [matMenuTriggerFor]="matches" style="color: white;">Matches</button>
-  <mat-menu #matches="matMenu">
-    <button mat-menu-item (click)="this.router.navigate(['/matches']);">Matches</button>
-  </mat-menu>
-
-  <button mat-button [matMenuTriggerFor]="history" style="color: white;">History</button>
-  <mat-menu #history="matMenu">
-    <button mat-menu-item>History</button>
-  </mat-menu>
-
-  <button mat-button [matMenuTriggerFor]="user" style="float: right; color: white;">User</button>
-  <mat-menu #user="matMenu">
-    <button mat-menu-item>Settings</button>
-    <button mat-menu-item>Select Team</button>
-    <button mat-menu-item (click)="logout()">Logout</button>
-    <button mat-menu-item (click)="delete()">Delete Account</button>
-  </mat-menu>
-</div>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="drawer-container">
+  <mat-sidenav mode="side" #sidenav [(opened)]="menuHidden" #drawer class="drawer-sidenav">
+    <mat-toolbar class="menu-header">
+        <i class="fas fa-bars"></i> Menu
+      </mat-toolbar>
+    <button mat-button style="width:100%" (click)="this.router.navigate(['/table']);"><i class="fas fa-table"></i> Table</button>
+    <button mat-button style="width:100%" (click)="this.router.navigate(['/matches']);"><i class="fas fa-futbol"></i> Matches</button>
+    <button mat-button style="width:100%" (click)="this.router.navigate(['/history']);"><i class="fas fa-history"></i> History</button>
+    <button mat-button [matMenuTriggerFor]="user" style="width:100%;"><i class="fas fa-user"></i> User</button>
+    <mat-menu #user="matMenu">
+      <button mat-menu-item><i class="fas fa-wrench"></i> Settings</button>
+      <button mat-menu-item><i class="fas fa-user-plus"></i> Select Team</button>
+      <button mat-menu-item (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      <button mat-menu-item (click)="delete()"><i class="fas fa-trash-alt"></i> Delete Account</button>
+    </mat-menu>
+  </mat-sidenav>
+  <mat-sidenav-content class="drawer-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

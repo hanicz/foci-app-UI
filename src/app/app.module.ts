@@ -51,6 +51,7 @@ import { TableService } from './services/table.service';
 import { MatchesComponent } from './matches/matches.component';
 import { MatchService } from './services/match.service';
 import { TippService } from './services/tipp.service';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { TippService } from './services/tipp.service';
     LoginComponent,
     RegisterComponent,
     TableComponent,
-    MatchesComponent
+    MatchesComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserAnimationsModule,

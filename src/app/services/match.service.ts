@@ -23,4 +23,31 @@ export class MatchService {
       .map((res: Response) => res.json());
   }
 
+  get_histroy_matches(leagueId: Number){
+    const url = `${this.userUrl}/history/${leagueId}`;
+    return this.http.get(url, {
+      headers: this.headers,
+      withCredentials: true
+    })
+      .map((res: Response) => res.json());
+  }
+
+  get_histroy_users(leagueId: Number){
+    const url = `${this.userUrl}/history/users/${leagueId}`;
+    return this.http.get(url, {
+      headers: this.headers,
+      withCredentials: true
+    })
+      .map((res: Response) => res.json());
+  }
+
+  get_histroy_tipps(leagueId: Number, userId: Number){
+    const url = `${this.userUrl}/history/tipps/?legueid=${leagueId}&userid=${userId}`;
+    return this.http.get(url, {
+      headers: this.headers,
+      withCredentials: true
+    })
+      .map((res: Response) => res.json());
+  }
+
 }

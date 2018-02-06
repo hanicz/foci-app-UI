@@ -1,3 +1,33 @@
 #menuBar {
 	border-bottom:1px solid white;
 }
+
+.drawer-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.drawer-content {
+	background-size: cover;
+	background-position: relative;
+	background-image: url("../assets/BG.jpg");
+	height: 100%;
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.drawer-sidenav {
+	width: 15%;
+	background: rgba(255, 255, 255);
+}
+
+.menu-header{
+	background: rgb(42, 96, 245);
+	align-items: center;
+	justify-content: center;
+	color: rgb(255, 255, 255);
+}
