@@ -26,10 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-
-
     if (this.username.valid && this.password.valid && this.email.valid) {
-
       this.userService
         .register_user(this.user)
         .subscribe(

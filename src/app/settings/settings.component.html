@@ -1,0 +1,19 @@
+<div class="settings-container">
+  <mat-form-field>
+    <input matInput placeholder="New Email" [(ngModel)]="newuser.email" [formControl]="email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="New Pasword" [type]="hide ? 'password' : 'text'" [(ngModel)]="newuser.newpassword">
+    <mat-icon matSuffix (click)="hide = !hide">{{hidenew ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Current Password" [type]="hide ? 'password' : 'text'" [(ngModel)]="newuser.password" [formControl]="password">
+    <mat-icon matSuffix (click)="hide = !hide">{{hideold ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="save();">Save</button>
+  </div>
+</div>

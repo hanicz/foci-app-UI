@@ -52,6 +52,8 @@ import { MatchesComponent } from './matches/matches.component';
 import { MatchService } from './services/match.service';
 import { TippService } from './services/tipp.service';
 import { HistoryComponent } from './history/history.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SelectteamComponent } from './selectteam/selectteam.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { HistoryComponent } from './history/history.component';
     RegisterComponent,
     TableComponent,
     MatchesComponent,
-    HistoryComponent
+    HistoryComponent,
+    SettingsComponent,
+    SelectteamComponent
   ],
   imports: [
     BrowserAnimationsModule,
