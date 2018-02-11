@@ -16,6 +16,8 @@ export class StatisticComponent implements OnInit {
 
   selectedLeague: League;
   leagues: League[];
+  selectedType: {value: string, viewValue: string};
+
   types = [
     { value: 'notipp', viewValue: 'No tipp' },
     { value: '3', viewValue: '3 pointer' },
@@ -23,6 +25,8 @@ export class StatisticComponent implements OnInit {
     { value: '1', viewValue: '1 pointer' },
     { value: '0', viewValue: '0 pointer' }
   ];
+
+
   statistic: Statistic;
 
   @ViewChild("baseChart")
@@ -32,6 +36,7 @@ export class StatisticComponent implements OnInit {
   public pieChartLabels: string[] = [];
   public pieChartData: number[] = [];
   public pieChartType: string = 'pie';
+  colors: string[];
 
   // events
   public chartClicked(e: any): void {
@@ -59,23 +64,25 @@ export class StatisticComponent implements OnInit {
   }
 
   get_statistic() {
-    /*this.statistiService.get_statistic(this.selectedLeague.ID,"notipp").subscribe((json: Object) =>{
+    this.statistiService.get_statistic(this.selectedLeague.ID,this.selectedType.value).subscribe((json: Object) =>{
       this.statistic = json as Statistic;
       this.pieChartData = this.statistic.statistics;
       this.pieChartLabels = this.statistic.users;
+      this.colors = [];
+
+      for(let i = 0; i < this.statistic.users.length;i ++){
+        this.colors.push(this.getRandomColor());
+      }
+
+      if (this.chart !== undefined) {
+        this.chart.ngOnDestroy();
+        this.chart.labels = this.pieChartLabels;
+        this.chart.colors = this.colors;
+        this.chart.chart = this.chart.getChartBuilder(this.chart.ctx);
+      }
     },
     error => {
-    });*/
-
-    this.pieChartData = [1, 2]
-    this.pieChartLabels = ["asd", "awd"];
-
-    if (this.chart !== undefined) {
-      this.chart.ngOnDestroy();
-      this.chart.labels = this.pieChartLabels;
-      this.chart.chart = this.chart.getChartBuilder(this.chart.ctx);
-    }
-
+    });
   }
 
   getRandomColor() {

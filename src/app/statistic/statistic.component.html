@@ -6,8 +6,8 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Statistic Type" (change)="get_statistic();">
-      <mat-option *ngFor="let type of types" [value]="type.value" >
+    <mat-select placeholder="Statistic Type" (change)="get_statistic();" [(ngModel)] ="selectedType">
+      <mat-option *ngFor="let type of types" [value]="type" >
         {{ type.viewValue }}
       </mat-option>
     </mat-select>
