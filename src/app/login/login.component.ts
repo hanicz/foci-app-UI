@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     if (this.username.valid && this.password.valid) {
 
       this.userService.login_user(this.user).subscribe((json: Object) => {
-        console.log("wat");
         this.router.navigate(['/table']);
       },
         error => {

@@ -11,7 +11,7 @@ export class TippService {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   });
-  private userUrl = 'tipps';
+  private url = 'tipps';
 
   constructor(private http: Http) { }
 
@@ -22,7 +22,7 @@ export class TippService {
       'tipp': tipp.score
     }
 
-    const url = `${this.userUrl}`;
+    const url = `${this.url}`;
     return this.http.post(url, JSON.stringify(data),{
       headers: this.headers,
       withCredentials: true

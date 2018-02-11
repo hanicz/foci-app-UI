@@ -9,12 +9,12 @@ export class TableService {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   });
-  private userUrl = 'tables';
+  private url = 'tables';
 
   constructor(private http: Http) { }
 
   get_table(leagueid: Number){
-    const url = `${this.userUrl}/${leagueid}`;
+    const url = `${this.url}/${leagueid}`;
     return this.http.get(url, {
       withCredentials: true
     })

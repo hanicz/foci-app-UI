@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRouterModule } from './app-router/app-router.module';
 import { LoginComponent } from './login/login.component';
+import { ChartsModule, BaseChartDirective } from 'ng2-charts/ng2-charts';
 
 import {
   MatAutocompleteModule,
@@ -54,6 +55,9 @@ import { TippService } from './services/tipp.service';
 import { HistoryComponent } from './history/history.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SelectteamComponent } from './selectteam/selectteam.component';
+import { TeamService } from './services/team.service';
+import { StatisticComponent } from './statistic/statistic.component';
+import { StatisticService } from './services/statistic.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,8 @@ import { SelectteamComponent } from './selectteam/selectteam.component';
     MatchesComponent,
     HistoryComponent,
     SettingsComponent,
-    SelectteamComponent
+    SelectteamComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -103,9 +108,10 @@ import { SelectteamComponent } from './selectteam/selectteam.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
-  providers: [ UserService, LeagueService, TableService, MatchService, TippService ],
+  providers: [ UserService, LeagueService, TableService, MatchService, TippService, TeamService, StatisticService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

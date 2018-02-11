@@ -40,7 +40,6 @@ export class TableComponent implements OnInit {
 
   load_table(){
     this.tableService.get_table(this.selectedLeague.ID).subscribe((json: Object) => {
-      console.log(json);
       this.tableRecords = json as Tablerecord[];
       this.dataSource = new MatTableDataSource<Tablerecord>(this.tableRecords);
     },

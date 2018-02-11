@@ -1,0 +1,21 @@
+<div class="statistic-container">
+  <mat-form-field>
+    <mat-select placeholder="League" [(ngModel)]="selectedLeague">
+      <mat-option *ngFor="let league of leagues" [value]="league">{{ league.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Statistic Type" (change)="get_statistic();">
+      <mat-option *ngFor="let type of types" [value]="type.value" >
+        {{ type.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div style="display: block">
+    <canvas baseChart #baseChart="base-chart" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+</div>

@@ -1,25 +1,12 @@
-.table-container {
+.statistic-container {
     display: flex;
     flex-direction: column;
     max-height: 500px;
-    max-width: 50%;
+    max-width: 60%;
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     padding: 2%;
     background-color: white;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .mat-table {
-    overflow: auto;
-    max-height: 500px;
-  }
-
-  .mat-column-name {
-    text-align: center;
-  }
-
-  .mat-column-point {
-    text-align: center;
   }

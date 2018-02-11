@@ -14,17 +14,22 @@ export class SettingsComponent implements OnInit {
   hidenew = true;
   hideold = true;
 
-  email = new FormControl('', [Validators.email]);
+  email = new FormControl('', [Validators.pattern('^$|^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')]);
   password = new FormControl('', [Validators.required]);
 
   constructor(private userService: UserService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
   }
 
-  save(){
-
+  save() {
+    if (this.email.valid && this.password.valid) {
+      this.userService.change_data(this.newuser).subscribe((json: Object) => {
+      },
+        error => {
+        });
+    }
   }
 
 }

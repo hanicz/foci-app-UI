@@ -9,7 +9,7 @@
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container matColumnDef="match">
-      <mat-header-cell *matHeaderCellDef style="text-align: center;"> Match </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Match </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <img src="{{element.homelogo}}" height="20" width="20"> {{element.home}} - {{element.away}} 
         <img src="{{element.awaylogo}}" height="20" width="20">
@@ -17,16 +17,16 @@
     </ng-container>
 
     <ng-container matColumnDef="tipp">
-      <mat-header-cell *matHeaderCellDef style="text-align: center;"> Tipp </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Tipp </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-form-field style="max-width: 50%">
-          <input matInput type="text" [(ngModel)]="element.score" (change)="score_change(element);">
+          <input matInput type="text" [(ngModel)]="element.score" (change)="score_change(element);" style="text-align: center">
         </mat-form-field>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="start" >
-      <mat-header-cell *matHeaderCellDef style="text-align: center;"> Start </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Start </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.start}} </mat-cell>
     </ng-container>
 

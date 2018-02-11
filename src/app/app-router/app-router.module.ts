@@ -9,6 +9,8 @@ import { TableComponent } from '../table/table.component';
 import { MatchesComponent } from '../matches/matches.component';
 import { HistoryComponent } from '../history/history.component';
 import { SettingsComponent } from '../settings/settings.component';
+import { SelectteamComponent } from '../selectteam/selectteam.component';
+import { StatisticComponent } from '../statistic/statistic.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'table',  component: TableComponent },
   { path: 'matches',  component: MatchesComponent },
   { path: 'history',  component: HistoryComponent },
-  { path: 'settings',  component: SettingsComponent }
+  { path: 'settings',  component: SettingsComponent },
+  { path: 'select',  component: SelectteamComponent },
+  { path: 'statistic',  component: StatisticComponent }
 ];
 
 @NgModule({

@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
+
 import { Headers, Http, URLSearchParams, Response } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class MatchService {
+export class TeamService {
 
   private headers = new Headers({
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   });
-  private url = 'matches';
+  private url = 'teams';
 
   constructor(private http: Http) { }
 
-  get_timed_matches(leagueId: Number){
-    const url = `${this.url}/timed/${leagueId}`;
+  get_selected() {
+    const url = `${this.url}/selected`;
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
@@ -23,8 +24,23 @@ export class MatchService {
       .map((res: Response) => res.json());
   }
 
-  get_histroy_tipps(leagueId: Number){
-    const url = `${this.url}/history/${leagueId}`;
+  select_new(leagueid: Number, team: String) {
+
+    var data = {
+      "leagueid": leagueid,
+      "team": team
+    };
+
+    const url = `${this.url}/selected`;
+    return this.http.get(url, {
+      headers: this.headers,
+      withCredentials: true
+    })
+      .map((res: Response) => res.json());
+  }
+
+  get_teams(leagueid: Number) {
+    const url = `${this.url}/all/${leagueid}`;
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true

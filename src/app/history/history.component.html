@@ -1,14 +1,14 @@
 <div class="history-container mat-elevation-z8">
 
   <mat-form-field>
-    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="load_table();">
+    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="get_users();">
       <mat-option *ngFor="let league of leagues" [value]="league">{{ league.name }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-table #table [dataSource]="dataSource">
     <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
-      <mat-header-cell *matHeaderCellDef style="text-align: center;"> {{ column.header }} </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> {{ column.header }} </mat-header-cell>
       <mat-cell *matCellDef="let element">{{column.cell(element)}}</mat-cell>
     </ng-container>
 

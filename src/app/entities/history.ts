@@ -1,9 +1,11 @@
 import { Serializable } from '../utils/serializable'
 
 export class History extends Serializable{
-    public id: Number;
-    public home: string;
-    public away: string;
-    public homeLogo: string;
-    public awayLogo: string;
+    public home: String;
+    public away: String;
+    public hlogo: String;
+    public alogo: String;
+    public hgoals: Number;
+    public agoals: Number;
+    public tipps: String[];
 }

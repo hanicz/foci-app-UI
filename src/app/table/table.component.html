@@ -9,12 +9,12 @@
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef style="text-align: center;"> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="point">
-      <mat-header-cell *matHeaderCellDef style="text-align: center;"> Point </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Point </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.point}} </mat-cell>
     </ng-container>
 

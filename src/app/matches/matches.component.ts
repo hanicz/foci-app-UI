@@ -50,6 +50,7 @@ export class MatchesComponent implements OnInit {
         
       },
       error => {
+        tippRecord.score = "";
       });
     }
   }

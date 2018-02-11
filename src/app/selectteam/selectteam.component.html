@@ -1,3 +1,18 @@
-<p>
-  selectteam works!
-</p>
+<div class="select-container">
+
+  <mat-form-field>
+    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="load_input();">
+      <mat-option *ngFor="let league of leagues" [value]="league">{{ league.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-select placeholder="Team" [(ngModel)]="selectedTeam">
+        <mat-option *ngFor="let team of teams" [value]="team">{{ team.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="save()"  [disabled]="buttonDisabled">Save</button>
+  </div>
+</div>

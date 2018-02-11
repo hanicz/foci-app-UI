@@ -15,3 +15,25 @@
     overflow: auto;
     max-height: 500px;
   }
+
+  .mat-column-tipp {
+    flex: 0 0 10%;
+    text-align: center;
+  }
+
+  .mat-column-match {
+    flex: 0 0 60%;
+    text-align: center;
+  }
+
+  .mat-column-start {
+    flex: 0 0 30%;
+    text-align: center;
+  }
+
+  .mat-header-row {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 99;
+  }

@@ -10,12 +10,12 @@ export class LeagueService {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   });
-  private userUrl = 'leagues';
+  private url = 'leagues';
 
   constructor(private http: Http) { }
 
   get_active_leagues(){
-    const url = `${this.userUrl}/active`;
+    const url = `${this.url}/active`;
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
@@ -24,7 +24,16 @@ export class LeagueService {
   }
 
   get_all_leagues(){
-    const url = `${this.userUrl}`;
+    const url = `${this.url}`;
+    return this.http.get(url, {
+      headers: this.headers,
+      withCredentials: true
+    })
+      .map((res: Response) => res.json());
+  }
+
+  get_users_for_league(leagueId: Number){
+    const url = `${this.url}/users/${leagueId}`;
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
