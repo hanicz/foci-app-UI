@@ -1,12 +1,10 @@
 .statistic-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 1000px;
-    max-width: 60%;
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2%;
-    background-color: white;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  max-height: 1000px;
+  max-width: 60%;
+  margin-top: 5%;
+  margin-left: 9%;
+  padding: 2%;
+  background-color: white;
   }

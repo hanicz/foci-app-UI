@@ -13,7 +13,7 @@
 .drawer-content {
 	background-size: cover;
 	background-position: relative;
-	background-image: url("../assets/BG.jpg");
+	background-image: url("../assets/2.png");
 	height: 100%;
 	margin: 0;
 	background-repeat: no-repeat;
@@ -21,19 +21,19 @@
 }
 
 .drawer-sidenav {
-	width: 10%;
-	background: rgba(255, 255, 255);
-	transition: width 1s;
+	width: 3%;
+	background:#00627d;
+	transition: width 0.3s;
 }
 
 .drawer-sidenav:hover {
-	width: 15%;
+	width: 10%;
 }
 
 .menu-header{
 	background-image: url(../assets/menu.jpg);
 	background-repeat: no-repeat;
-    background-size: cover;
+	background-size: cover;
 	align-items: center;
 	justify-content: center;
 	color: rgb(255, 255, 255);

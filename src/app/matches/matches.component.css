@@ -1,19 +1,17 @@
 .match-container {
     display: flex;
     flex-direction: column;
-    max-height: 500px;
+    max-height: 700px;
     max-width: 60%;
     margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2%;
+    margin-left: 9%;
+    padding: 1%;
     background-color: white;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   }
   
   .mat-table {
     overflow: auto;
-    max-height: 500px;
+    max-height: 700px;
   }
 
   .mat-column-tipp {

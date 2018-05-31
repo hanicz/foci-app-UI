@@ -1,5 +1,5 @@
-<div class="table-container mat-elevation-z8">
-
+<div class="table-container ">
+<!--mat-elevation-z8-->
   <mat-form-field>
     <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="load_table();">
       <mat-option *ngFor="let league of leagues" [value]="league">{{ league.name }}</mat-option>

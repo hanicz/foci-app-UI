@@ -13,6 +13,11 @@ export class AppComponent {
   title = 'app';
   menuHidden:boolean;
   table: String;
+  matches: String;
+  history: String;
+  statistics: String;
+  userLabel: String;
+  menu : String;
 
   constructor(
     private location: Location,
@@ -20,12 +25,36 @@ export class AppComponent {
     private userService: UserService
   ) {
     this.table = "";
+    this.matches = "";
+    this.history = "";
+    this.statistics = "";
+    this.userLabel = "";
+    this.menu = "";
+
     this.router.events.subscribe((event) => {
       if(event instanceof NavigationEnd){
         var pathString = location.path();
         this.menuHidden = !(['/login','/register'].indexOf(location.path()) > -1);
       }
   });
+  }
+
+  mouseEnter(){
+    this.table = " Table";
+    this.matches = " Matches";
+    this.history = " History";
+    this.statistics = " Statistics";
+    this.userLabel = " User";
+    this.menu = " Menu";
+  }
+
+  mouseLeave(){
+    this.table = "";
+    this.matches = "";
+    this.history = "";
+    this.statistics = "";
+    this.userLabel = "";
+    this.menu = "";
   }
 
   logout(): void{
