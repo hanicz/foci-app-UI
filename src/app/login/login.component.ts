@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { User } from '../entities/user';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
@@ -24,6 +24,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  @HostListener('window:keydown', ['$event'])
+  keyboardInput(event: KeyboardEvent) {
+    if(event.keyCode == 13){
+      this.login();
+    }
+  }
+
   login(): void {
 
     if (this.username.valid && this.password.valid) {
@@ -32,11 +39,14 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/table']);
       },
         error => {
-          console.error('Error: ' + error);
-          console.log(this.router.url);
+          this.user.reset();
         }
       );
+    }else{
+      if(!this.username.valid) this.username.markAsTouched();
+      if(!this.password.valid) this.password.markAsTouched();
     }
+
   }
 
 }

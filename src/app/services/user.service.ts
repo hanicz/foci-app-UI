@@ -4,7 +4,7 @@ import { Headers, Http, URLSearchParams, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { User } from '../entities/user';
-import { Newuser } from '../entities/newuser';
+import { ChangeUser } from '../entities/changeuser';
 
 @Injectable()
 export class UserService {
@@ -50,10 +50,19 @@ export class UserService {
       .map((res: Response) => res.json());
   }
 
-  change_data(newuser: Newuser) {
+  change_data(changeUser: ChangeUser) {
 
     const url = `${this.url}/changeData`;
-    return this.http.post(url, JSON.stringify(newuser), {
+    return this.http.post(url, JSON.stringify(changeUser), {
+      headers: this.headers,
+      withCredentials: true
+    })
+      .map((res: Response) => res.json());
+  }
+
+  getPublicUser(){
+    const url = `${this.url}`;
+    return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
     })

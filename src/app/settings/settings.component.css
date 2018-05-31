@@ -13,3 +13,7 @@
   .settings-container > * {
     width: 100%;
   }
+
+  .email-not-section{
+    margin-bottom: 10px;
+  }

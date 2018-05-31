@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Newuser } from '../entities/newuser';
+import { ChangeUser } from '../entities/changeuser';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  newuser = new Newuser();
+  changeUser: ChangeUser;
   hidenew = true;
   hideold = true;
 
@@ -18,14 +18,22 @@ export class SettingsComponent implements OnInit {
   password = new FormControl('', [Validators.required]);
 
   constructor(private userService: UserService,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   ngOnInit() {
+    this.changeUser = new ChangeUser();
+    this.userService.getPublicUser().subscribe((json: Object) => {
+      this.changeUser = json as ChangeUser;
+    },
+      error => {
+
+      });
   }
 
   save() {
     if (this.email.valid && this.password.valid) {
-      this.userService.change_data(this.newuser).subscribe((json: Object) => {
+      this.userService.change_data(this.changeUser).subscribe((json: Object) => {
       },
         error => {
         });

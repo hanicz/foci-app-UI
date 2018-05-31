@@ -28,7 +28,7 @@ export class TableComponent implements OnInit {
     this.leagueService.get_all_leagues().subscribe((json: Object) =>{
       this.leagues = json as League[];
       this.leagues.forEach((l) => {
-        if(l.ID == 464){
+        if(l.id == 464){
           this.selectedLeague = l;
           this.load_table();
         }
@@ -39,7 +39,7 @@ export class TableComponent implements OnInit {
   }
 
   load_table(){
-    this.tableService.get_table(this.selectedLeague.ID).subscribe((json: Object) => {
+    this.tableService.get_table(this.selectedLeague.id).subscribe((json: Object) => {
       this.tableRecords = json as Tablerecord[];
       this.dataSource = new MatTableDataSource<Tablerecord>(this.tableRecords);
     },

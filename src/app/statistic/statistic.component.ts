@@ -4,8 +4,7 @@ import { LeagueService } from '../services/league.service';
 import { League } from '../entities/league';
 import { StatisticService } from '../services/statistic.service';
 import { Statistic } from '../entities/statistic';
-
-import { ChartsModule, BaseChartDirective } from 'ng2-charts/ng2-charts';
+import { Chart, ChartPoint } from 'chart.js';
 
 @Component({
   selector: 'app-statistic',
@@ -16,7 +15,12 @@ export class StatisticComponent implements OnInit {
 
   selectedLeague: League;
   leagues: League[];
+  chart: Chart;
+  labels: string[];
+  amounts: Number[];
+  colors: string[];
   selectedType: {value: string, viewValue: string};
+  statistic: Statistic;
 
   types = [
     { value: 'notipp', viewValue: 'No tipp' },
@@ -26,35 +30,14 @@ export class StatisticComponent implements OnInit {
     { value: '0', viewValue: '0 pointer' }
   ];
 
-
-  statistic: Statistic;
-
-  @ViewChild("baseChart")
-  chart: BaseChartDirective;
-
-  // Pie
-  public pieChartLabels: string[] = [];
-  public pieChartData: number[] = [];
-  public pieChartType: string = 'pie';
-  colors: string[];
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
   constructor(private leagueService: LeagueService,
     private statistiService: StatisticService) { }
 
   ngOnInit() {
-    this.leagueService.get_active_leagues().subscribe((json: Object) => {
+    this.leagueService.get_all_leagues().subscribe((json: Object) => {
       this.leagues = json as League[];
       this.leagues.forEach((l) => {
-        if (l.ID == 464) {
+        if (l.id == 464) {
           this.selectedLeague = l;
         }
       });
@@ -64,24 +47,46 @@ export class StatisticComponent implements OnInit {
   }
 
   get_statistic() {
-    this.statistiService.get_statistic(this.selectedLeague.ID,this.selectedType.value).subscribe((json: Object) =>{
+    this.statistiService.get_statistic(this.selectedLeague.id,this.selectedType.value).subscribe((json: Object) =>{
       this.statistic = json as Statistic;
-      this.pieChartData = this.statistic.statistics;
-      this.pieChartLabels = this.statistic.users;
+
+      this.labels = [];
+      this.amounts = [];
       this.colors = [];
-
-      for(let i = 0; i < this.statistic.users.length;i ++){
-        this.colors.push(this.getRandomColor());
-      }
-
-      if (this.chart !== undefined) {
-        this.chart.ngOnDestroy();
-        this.chart.labels = this.pieChartLabels;
-        this.chart.colors = this.colors;
-        this.chart.chart = this.chart.getChartBuilder(this.chart.ctx);
-      }
+      this.build_chart();
     },
     error => {
+    });
+  }
+
+  build_chart() {
+    for(var i = 0; i < this.statistic.users.length; i++){
+      this.labels.push(this.statistic.users[i]);
+      this.amounts.push(this.statistic.statistics[i]);
+      this.colors.push(this.getRandomColor());
+    }
+
+    if (this.chart !== undefined) {
+      this.chart.destroy();
+    }
+
+    this.chart = new Chart('canvas', {
+      type: 'pie',
+      data: {
+        labels: this.labels,
+        datasets: [
+          {
+            data: this.amounts as ChartPoint[],
+            backgroundColor: this.colors
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Tipp statistics'
+        }
+      }
     });
   }
 

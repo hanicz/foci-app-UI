@@ -13,9 +13,8 @@
     </mat-select>
   </mat-form-field>
 
-  <div style="display: block">
-    <canvas baseChart #baseChart="base-chart" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)"></canvas>
+  <div>
+    <canvas hidden id="canvas">{{ chart }}</canvas>
   </div>
 
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { User } from '../entities/user';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
@@ -25,16 +25,29 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  @HostListener('window:keydown', ['$event'])
+  keyboardInput(event: KeyboardEvent) {
+    if (event.keyCode == 13) {
+      this.register();
+    }
+  }
+
   register(): void {
     if (this.username.valid && this.password.valid && this.email.valid) {
       this.userService
         .register_user(this.user)
         .subscribe(
-        (json: Object) => {
-          this.router.navigate(["/login"]);
-        },
-        error => console.error('Error: ' + error)
+          (json: Object) => {
+            this.router.navigate(["/login"]);
+          },
+          error => {
+            this.user.reset();
+          }
         );
+    } else {
+      if (!this.username.valid) this.username.markAsTouched();
+      if (!this.password.valid) this.password.markAsTouched();
+      if (!this.email.valid) this.email.markAsTouched();
     }
   }
 

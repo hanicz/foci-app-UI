@@ -1,17 +1,21 @@
 <div class="settings-container">
   <mat-form-field>
-    <input matInput placeholder="New Email" [(ngModel)]="newuser.email" [formControl]="email">
+    <input matInput placeholder="Email" [(ngModel)]="changeUser.email" [formControl]="email">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="New Pasword" [type]="hidenew ? 'password' : 'text'" [(ngModel)]="newuser.newpassword">
+    <input matInput placeholder="New Pasword" [type]="hidenew ? 'password' : 'text'" [(ngModel)]="changeUser.newpassword">
     <mat-icon matSuffix (click)="hidenew = !hidenew">{{hidenew ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Current Password" [type]="hideold ? 'password' : 'text'" [(ngModel)]="newuser.password" [formControl]="password">
+    <input matInput placeholder="Current Password" [type]="hideold ? 'password' : 'text'" [(ngModel)]="changeUser.password" [formControl]="password">
     <mat-icon matSuffix (click)="hideold = !hideold">{{hideold ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
+
+  <section class="email-not-section">
+    <mat-checkbox class="not-margin" [(ngModel)]="changeUser.notification">Email Notification</mat-checkbox>
+  </section>
 
   <div class="button-row">
     <button mat-raised-button color="primary" (click)="save();">Save</button>

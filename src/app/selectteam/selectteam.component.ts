@@ -28,7 +28,7 @@ export class SelectteamComponent implements OnInit {
     this.leagueService.get_active_leagues().subscribe((json: Object) => {
       this.leagues = json as League[];
       this.leagues.forEach((l) => {
-        if (l.ID == 464) {
+        if (l.id == 467) {
           this.selectedLeague = l;
         }
         this.get_favourites();
@@ -41,7 +41,7 @@ export class SelectteamComponent implements OnInit {
 
   load_input() {
     this.favourites.forEach((f) =>{
-      if(f.leagueid == this.selectedLeague.ID) {
+      if(f.leagueid == this.selectedLeague.id) {
         this.teams = [];
         let t = new Team();
         t.id = f.leagueid;
@@ -54,6 +54,7 @@ export class SelectteamComponent implements OnInit {
       this.buttonDisabled = false;
       this.get_teams();
     });
+    if(this.favourites.length == 0) this.get_teams();
   }
 
   get_favourites(){
@@ -66,7 +67,7 @@ export class SelectteamComponent implements OnInit {
   }
 
   get_teams(){
-    this.teamService.get_teams(this.selectedLeague.ID).subscribe((json: Object) => {
+    this.teamService.get_teams(this.selectedLeague.id).subscribe((json: Object) => {
       this.teams = json as Team[];
     },
       error => {
@@ -74,7 +75,11 @@ export class SelectteamComponent implements OnInit {
   }
 
   save(){
-    
+    this.teamService.select_new(this.selectedLeague.id, this.selectedTeam.name).subscribe((json: Object) => {
+      
+    },
+      error => {
+      });
   }
 
 }

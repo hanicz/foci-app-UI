@@ -12,12 +12,14 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   title = 'app';
   menuHidden:boolean;
+  table: String;
 
   constructor(
     private location: Location,
     private router: Router,
     private userService: UserService
   ) {
+    this.table = "";
     this.router.events.subscribe((event) => {
       if(event instanceof NavigationEnd){
         var pathString = location.path();

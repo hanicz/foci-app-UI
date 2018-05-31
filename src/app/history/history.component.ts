@@ -33,7 +33,7 @@ export class HistoryComponent implements OnInit {
     this.leagueService.get_all_leagues().subscribe((json: Object) => {
       this.leagues = json as League[];
       this.leagues.forEach((l) => {
-        if (l.ID == 464) {
+        if (l.id == 464) {
           this.selectedLeague = l;
           this.get_users();
         }
@@ -65,7 +65,7 @@ export class HistoryComponent implements OnInit {
   }
 
   get_users() {
-    this.leagueService.get_users_for_league(this.selectedLeague.ID).subscribe((json: Object) => {
+    this.leagueService.get_users_for_league(this.selectedLeague.id).subscribe((json: Object) => {
       this.users = json as User[];
       this.load_table();
     },
@@ -74,7 +74,7 @@ export class HistoryComponent implements OnInit {
   }
 
   get_matches() {
-    this.matchService.get_histroy_tipps(this.selectedLeague.ID).subscribe((json: Object) => {
+    this.matchService.get_histroy_tipps(this.selectedLeague.id).subscribe((json: Object) => {
       this.historyRecords = json as History[];
 
       this.dataSource = new MatTableDataSource<History>(this.historyRecords);

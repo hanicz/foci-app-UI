@@ -30,7 +30,7 @@ export class MatchesComponent implements OnInit {
     this.leagueService.get_active_leagues().subscribe((json: Object) =>{
       this.leagues = json as League[];
       this.leagues.forEach((l) => {
-        if(l.ID == 464){
+        if(l.id == 467){
           this.selectedLeague = l;
           this.load_table();
         }
@@ -56,7 +56,7 @@ export class MatchesComponent implements OnInit {
   }
 
   load_table(){
-    this.matchService.get_timed_matches(this.selectedLeague.ID).subscribe((json: Object) =>{
+    this.matchService.get_timed_matches(this.selectedLeague.id).subscribe((json: Object) =>{
       this.tipps = json as Tipp[];
       this.dataSource = new MatTableDataSource<Tipp>(this.tipps);
     },

@@ -31,8 +31,8 @@ export class TeamService {
       "team": team
     };
 
-    const url = `${this.url}/selected`;
-    return this.http.get(url, {
+    const url = `${this.url}/new`;
+    return this.http.post(url, data,{
       headers: this.headers,
       withCredentials: true
     })
