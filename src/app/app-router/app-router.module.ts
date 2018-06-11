@@ -11,6 +11,8 @@ import { HistoryComponent } from '../history/history.component';
 import { SettingsComponent } from '../settings/settings.component';
 import { SelectteamComponent } from '../selectteam/selectteam.component';
 import { StatisticComponent } from '../statistic/statistic.component';
+import { ResetComponent } from '../reset/reset.component';
+import { ResetpasswordComponent } from '../resetpassword/resetpassword.component';
 
 
 const routes: Routes = [
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path: 'history',  component: HistoryComponent },
   { path: 'settings',  component: SettingsComponent },
   { path: 'select',  component: SelectteamComponent },
-  { path: 'statistic',  component: StatisticComponent }
+  { path: 'statistic',  component: StatisticComponent },
+  { path: 'reset',  component: ResetComponent },
+  { path: 'resetpassword',  component: ResetpasswordComponent }
 ];
 
 @NgModule({

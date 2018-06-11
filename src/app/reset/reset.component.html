@@ -1,0 +1,10 @@
+<div class="reset-container">
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="email" [formControl]="emailControl">
+  </mat-form-field>
+
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="reset();" type="submit">Reset</button>
+    <button mat-raised-button color="primary" (click)="this.router.navigate(['/login']);">Login</button>
+  </div>
+</div>

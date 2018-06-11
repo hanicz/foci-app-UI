@@ -34,7 +34,7 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if(event instanceof NavigationEnd){
         var pathString = location.path();
-        this.menuHidden = !(['/login','/register'].indexOf(location.path()) > -1);
+        this.menuHidden = !(['/login','/register','/reset'].indexOf(location.path()) > -1);
       }
   });
   }

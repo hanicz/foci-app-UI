@@ -1,0 +1,23 @@
+.reset-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2%;
+    max-width: 40%;
+    margin-top: 10%;
+    margin-left: 20%;
+  }
+  
+  .reset-container > * {
+    width: 100%;
+  }
+
+  .reset-container .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+  .reset-container .message a {
+    color: #339dcf;
+    text-decoration: none;
+  }

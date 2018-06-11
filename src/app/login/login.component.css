@@ -11,13 +11,3 @@
   .login-container > * {
     width: 100%;
   }
-
-  .login-container .message {
-    margin: 15px 0 0;
-    color: #b3b3b3;
-    font-size: 12px;
-  }
-  .login-container .message a {
-    color: #339dcf;
-    text-decoration: none;
-  }

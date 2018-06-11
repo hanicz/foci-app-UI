@@ -58,6 +58,8 @@ import { SelectteamComponent } from './selectteam/selectteam.component';
 import { TeamService } from './services/team.service';
 import { StatisticComponent } from './statistic/statistic.component';
 import { StatisticService } from './services/statistic.service';
+import { ResetComponent } from './reset/reset.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { StatisticService } from './services/statistic.service';
     HistoryComponent,
     SettingsComponent,
     SelectteamComponent,
-    StatisticComponent
+    StatisticComponent,
+    ResetComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserAnimationsModule,

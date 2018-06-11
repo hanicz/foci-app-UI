@@ -68,4 +68,31 @@ export class UserService {
     })
       .map((res: Response) => res.json());
   }
+
+  reset(email: string){
+    var data = {
+      'email': email
+    }
+
+    const url = `${this.url}/reset`;
+    return this.http.post(url, JSON.stringify(data), {
+      headers: this.headers,
+      withCredentials: true
+    })
+      .map((res: Response) => res.json());
+  }
+
+  resetWithToken(password: string, token: string){
+    var data = {
+      'token': token,
+      'password': password
+    }
+
+    const url = `${this.url}/resetPassword`;
+    return this.http.post(url, JSON.stringify(data), {
+      headers: this.headers,
+      withCredentials: true
+    })
+      .map((res: Response) => res.json());
+  }
 }
