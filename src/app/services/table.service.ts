@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, URLSearchParams, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class TableService {
@@ -17,8 +17,7 @@ export class TableService {
     const url = `${this.url}/${leagueid}`;
     return this.http.get(url, {
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
 }

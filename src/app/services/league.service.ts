@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, URLSearchParams, Response } from '@angular/http';
-
-import 'rxjs/add/operator/map';
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class LeagueService {
@@ -19,8 +18,7 @@ export class LeagueService {
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   get_all_leagues(){
@@ -28,8 +26,7 @@ export class LeagueService {
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   get_users_for_league(leagueId: Number){
@@ -37,8 +34,7 @@ export class LeagueService {
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="match-container">
 
   <mat-form-field>
-    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="load_table();">
+    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (selectionChange)="load_table();">
       <mat-option *ngFor="let league of leagues" [value]="league">{{ league.name }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -11,8 +11,7 @@
     <ng-container matColumnDef="match">
       <mat-header-cell *matHeaderCellDef> Match </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <img src="{{element.homelogo}}" height="20" width="20"> {{element.home}} - {{element.away}} 
-        <img src="{{element.awaylogo}}" height="20" width="20">
+        <span><img src="{{element.homelogo}}" height="20" width="20"> {{element.home}} - {{element.away}} <img src="{{element.awaylogo}}" height="20" width="20"></span>
       </mat-cell>
     </ng-container>
 

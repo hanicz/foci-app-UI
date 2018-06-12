@@ -1,7 +1,7 @@
 <div class="table-container ">
 <!--mat-elevation-z8-->
   <mat-form-field>
-    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="load_table();">
+    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (selectionChange)="load_table();">
       <mat-option *ngFor="let league of leagues" [value]="league">{{ league.name }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -16,6 +16,11 @@
     <ng-container matColumnDef="point">
       <mat-header-cell *matHeaderCellDef> Point </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.point}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="logo">
+      <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <img src="{{element.logo}}" height="20" width="20"> </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

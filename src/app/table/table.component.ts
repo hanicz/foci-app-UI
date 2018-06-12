@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
   selectedLeague: League;
   leagues: League[];
 
-  displayedColumns = ['name', 'point'];
+  displayedColumns = ['name', 'point', 'logo'];
   dataSource = new MatTableDataSource<Tablerecord>();
 
   constructor(private tableService: TableService,

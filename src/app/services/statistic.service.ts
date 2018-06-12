@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, URLSearchParams, Response } from '@angular/http';
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class StatisticService {
@@ -17,8 +18,7 @@ export class StatisticService {
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, URLSearchParams, Response } from '@angular/http';
-
-import 'rxjs/add/operator/map';
+import { map } from "rxjs/operators";
 import { Tipp } from '../entities/tipp';
 
 @Injectable()
@@ -26,8 +25,7 @@ export class TippService {
     return this.http.post(url, JSON.stringify(data),{
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
 }

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { Headers, Http, URLSearchParams, Response } from '@angular/http';
-
-import 'rxjs/add/operator/map';
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class TeamService {
@@ -20,8 +18,7 @@ export class TeamService {
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   select_new(leagueid: Number, team: String) {
@@ -35,8 +32,7 @@ export class TeamService {
     return this.http.post(url, data,{
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   get_teams(leagueid: Number) {
@@ -44,8 +40,7 @@ export class TeamService {
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
 }

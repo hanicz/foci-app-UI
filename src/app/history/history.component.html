@@ -1,7 +1,7 @@
 <div class="history-container">
 
   <mat-form-field>
-    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="get_users();">
+    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (selectionChange)="get_users();">
       <mat-option *ngFor="let league of leagues" [value]="league">{{ league.name }}</mat-option>
     </mat-select>
   </mat-form-field>

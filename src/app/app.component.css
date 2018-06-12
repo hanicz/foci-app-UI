@@ -24,6 +24,7 @@
 	width: 3%;
 	background:#00627d;
 	transition: width 0.3s;
+	overflow: hidden;
 }
 
 .drawer-sidenav:hover {

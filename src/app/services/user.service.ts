@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, URLSearchParams, Response } from '@angular/http';
-
-import 'rxjs/add/operator/map';
-
+import { map } from "rxjs/operators";
 import { User } from '../entities/user';
 import { ChangeUser } from '../entities/changeuser';
 
@@ -23,31 +21,27 @@ export class UserService {
     return this.http.post(url, JSON.stringify(user), {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   register_user(user: User) {
 
     const url = `${this.url}/register`;
-    return this.http.post(url, JSON.stringify(user), { headers: this.headers })
-      .map((res: Response) => res.json());
+    return this.http.post(url, JSON.stringify(user), { headers: this.headers }).pipe(map((res: Response) => res.json()));
   }
 
   logout() {
     const url = `${this.url}/logout`;
     return this.http.put(url, null, {
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   delete() {
     const url = `${this.url}`;
     return this.http.delete(url, {
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   change_data(changeUser: ChangeUser) {
@@ -56,8 +50,7 @@ export class UserService {
     return this.http.post(url, JSON.stringify(changeUser), {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   getPublicUser(){
@@ -65,8 +58,7 @@ export class UserService {
     return this.http.get(url, {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   reset(email: string){
@@ -78,8 +70,7 @@ export class UserService {
     return this.http.post(url, JSON.stringify(data), {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 
   resetWithToken(password: string, token: string){
@@ -92,7 +83,6 @@ export class UserService {
     return this.http.post(url, JSON.stringify(data), {
       headers: this.headers,
       withCredentials: true
-    })
-      .map((res: Response) => res.json());
+    }).pipe(map((res: Response) => res.json()));
   }
 }

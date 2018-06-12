@@ -1,7 +1,7 @@
 <div class="select-container">
 
   <mat-form-field>
-    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (change)="load_input();">
+    <mat-select placeholder="League" [(ngModel)]="selectedLeague" (selectionChange)="load_input();">
       <mat-option *ngFor="let league of leagues" [value]="league">{{ league.name }}</mat-option>
     </mat-select>
   </mat-form-field>
