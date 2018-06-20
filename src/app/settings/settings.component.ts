@@ -3,6 +3,7 @@ import { ChangeUser } from '../entities/changeuser';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-settings',
@@ -18,7 +19,8 @@ export class SettingsComponent implements OnInit {
   password = new FormControl('', [Validators.required]);
 
   constructor(private userService: UserService,
-    private router: Router) {
+    private router: Router,
+    public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -34,8 +36,19 @@ export class SettingsComponent implements OnInit {
   save() {
     if (this.email.valid && this.password.valid) {
       this.userService.change_data(this.changeUser).subscribe((json: Object) => {
+        let extraClasses = ['background-green'];
+        this.snackBar.open("New data saved successfully", null, {
+          duration: 3000,
+          panelClass: extraClasses
+        });
+        this.ngOnInit();
       },
         error => {
+          let extraClasses = ['background-red'];
+          this.snackBar.open("Failed to save modified data", null, {
+            duration: 3000,
+            panelClass: extraClasses
+          });
         });
     }
   }

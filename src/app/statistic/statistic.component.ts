@@ -37,7 +37,7 @@ export class StatisticComponent implements OnInit {
     this.leagueService.get_all_leagues().subscribe((json: Object) => {
       this.leagues = json as League[];
       this.leagues.forEach((l) => {
-        if (l.id == 464) {
+        if (l.id == 467) {
           this.selectedLeague = l;
         }
       });

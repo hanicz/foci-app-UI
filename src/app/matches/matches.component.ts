@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {MatTableDataSource} from '@angular/material';
-import { forEach } from '@angular/router/src/utils/collection';
+import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { Tipp } from '../entities/tipp';
 import { MatchService } from '../services/match.service';
 import { LeagueService } from '../services/league.service';
@@ -23,45 +22,55 @@ export class MatchesComponent implements OnInit {
   dataSource = new MatTableDataSource<Tipp>();
 
   constructor(private leagueService: LeagueService,
-              private matchService: MatchService,
-              private tippService: TippService) { }
+    private matchService: MatchService,
+    private tippService: TippService,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.leagueService.get_active_leagues().subscribe((json: Object) =>{
+    this.leagueService.get_active_leagues().subscribe((json: Object) => {
       this.leagues = json as League[];
       this.leagues.forEach((l) => {
-        if(l.id == 467){
+        if (l.id == 467) {
           this.selectedLeague = l;
           this.load_table();
         }
       });
     },
-    error => {
-    });
+      error => {
+      });
   }
 
-  score_change(tippRecord: Tipp){
+  score_change(tippRecord: Tipp) {
     var pattern = /^\d{1,2}-\d{1,2}$/;
 
-    if(!(pattern.test(tippRecord.score))){
+    if (!(pattern.test(tippRecord.score))) {
       tippRecord.score = "";
-    }else{
-      this.tippService.regist_tipp(tippRecord).subscribe((json: Object) =>{
-        
+    } else {
+      this.tippService.regist_tipp(tippRecord).subscribe((json: Object) => {
+        let extraClasses = ['background-green'];
+        this.snackBar.open("Prediction saved", null, {
+          duration: 2000,
+          panelClass: extraClasses
+        });
       },
-      error => {
-        tippRecord.score = "";
-      });
+        error => {
+          tippRecord.score = "";
+          let extraClasses = ['background-red'];
+          this.snackBar.open("Failed to save prediction", null, {
+            duration: 2000,
+            panelClass: extraClasses
+          });
+        });
     }
   }
 
-  load_table(){
-    this.matchService.get_timed_matches(this.selectedLeague.id).subscribe((json: Object) =>{
+  load_table() {
+    this.matchService.get_timed_matches(this.selectedLeague.id).subscribe((json: Object) => {
       this.tipps = json as Tipp[];
       this.dataSource = new MatTableDataSource<Tipp>(this.tipps);
     },
-    error => {
-    });
+      error => {
+      });
   }
 
 }

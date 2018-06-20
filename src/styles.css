@@ -1,2 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.background-green{
+    opacity: 0.8;
+    background-color: rgb(0, 153, 0);
+    justify-content: center;
+  }
+  
+  .background-red{
+    opacity: 0.8;
+    background-color: rgb(255, 92, 51);
+    justify-content: center;
+  }

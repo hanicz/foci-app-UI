@@ -5,6 +5,7 @@ import { League } from '../entities/league';
 import { TeamService } from '../services/team.service';
 import { Favourite } from '../entities/favourite';
 import { Team } from '../entities/team';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-selectteam',
@@ -22,7 +23,8 @@ export class SelectteamComponent implements OnInit {
 
 
   constructor(private leagueService: LeagueService,
-    private teamService: TeamService) { }
+    private teamService: TeamService,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.leagueService.get_active_leagues().subscribe((json: Object) => {
@@ -40,8 +42,8 @@ export class SelectteamComponent implements OnInit {
 
 
   load_input() {
-    this.favourites.forEach((f) =>{
-      if(f.leagueid == this.selectedLeague.id) {
+    this.favourites.forEach((f) => {
+      if (f.leagueid == this.selectedLeague.id) {
         this.teams = [];
         let t = new Team();
         t.id = f.leagueid;
@@ -54,10 +56,10 @@ export class SelectteamComponent implements OnInit {
       this.buttonDisabled = false;
       this.get_teams();
     });
-    if(this.favourites.length == 0) this.get_teams();
+    if (this.favourites.length == 0) this.get_teams();
   }
 
-  get_favourites(){
+  get_favourites() {
     this.teamService.get_selected().subscribe((json: Object) => {
       this.favourites = json as Favourite[];
       this.load_input();
@@ -66,7 +68,7 @@ export class SelectteamComponent implements OnInit {
       });
   }
 
-  get_teams(){
+  get_teams() {
     this.teamService.get_teams(this.selectedLeague.id).subscribe((json: Object) => {
       this.teams = json as Team[];
     },
@@ -74,11 +76,21 @@ export class SelectteamComponent implements OnInit {
       });
   }
 
-  save(){
+  save() {
     this.teamService.select_new(this.selectedLeague.id, this.selectedTeam.name).subscribe((json: Object) => {
-      
+      let extraClasses = ['background-green'];
+      this.snackBar.open("Team successfully selected", null, {
+        duration: 3000,
+        panelClass: extraClasses
+      });
+      this.get_favourites();
     },
       error => {
+        let extraClasses = ['background-red'];
+        this.snackBar.open("Team selection failed", null, {
+          duration: 3000,
+          panelClass: extraClasses
+        });
       });
   }
 
