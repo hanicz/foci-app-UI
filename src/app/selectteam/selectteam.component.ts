@@ -30,7 +30,7 @@ export class SelectteamComponent implements OnInit {
     this.leagueService.get_active_leagues().subscribe((json: Object) => {
       this.leagues = json as League[];
       this.leagues.forEach((l) => {
-        if (l.id == 467) {
+        if (l.id == 2001) {
           this.selectedLeague = l;
         }
         this.get_favourites();
